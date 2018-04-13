@@ -5,6 +5,9 @@
  */
 package LanHouseJFrame;
 
+import javax.swing.JOptionPane;
+import java.lang.Thread;
+
 /**
  *
  * @author juanvmr
@@ -16,6 +19,28 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public MainFrame() {
         initComponents();
+        
+        admin = new AdminJInternalFrame();
+        admin.setVisible(false);
+        this.add(admin);
+        
+        usuario = new UsuarioJInternalFrame();
+        usuario.setVisible(false);
+        this.add(usuario);
+        
+        novavenda = new NovaVendaJInternalFrame();
+        novavenda.setVisible(false);
+        this.add(novavenda);
+        
+        maquinas = new MaquinasJInternalFrame();
+        maquinas.setVisible(false);
+        this.add(maquinas);
+        
+        login = new LoginJInternalFrame();
+        login.setVisible(true);
+        this.add(login);
+        
+        initialOpening();
     }
 
     /**
@@ -27,206 +52,77 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        UsuarioInternalFrame = new javax.swing.JInternalFrame();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        AdminMenu = new javax.swing.JMenu();
+        GerenciarAdminJMenuItem = new javax.swing.JMenuItem();
+        LoginAdminJMenuItem = new javax.swing.JMenuItem();
+        UsuarioMenu = new javax.swing.JMenu();
+        GerenciarUsuarioJMenuItem = new javax.swing.JMenuItem();
+        MaquinasMenu = new javax.swing.JMenu();
+        GerenciarMaquinasJMenuItem = new javax.swing.JMenuItem();
+        VendasMenu = new javax.swing.JMenu();
+        NovaVendaJMenuItem = new javax.swing.JMenuItem();
+        RelatorioVendaJMenuItem = new javax.swing.JMenuItem();
+        SobreMenu = new javax.swing.JMenu();
+        SobreJMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        UsuarioInternalFrame.setPreferredSize(new java.awt.Dimension(450, 240));
-        UsuarioInternalFrame.setVisible(true);
+        AdminMenu.setText("Admin");
 
-        jLabel1.setText("Nome:");
-
-        jLabel2.setText("CPF:");
-
-        jLabel3.setText("Data Nasc.:");
-
-        jLabel4.setText("Rua:");
-
-        jLabel5.setText("CEP:");
-
-        jLabel6.setText("Bairro:");
-
-        jLabel7.setText("Cidade:");
-
-        jLabel8.setText("Telefone:");
-
-        jButton1.setText("Pesquisar");
-
-        jButton2.setText("Excluir");
-
-        jButton3.setText("Cadastrar");
-
-        javax.swing.GroupLayout UsuarioInternalFrameLayout = new javax.swing.GroupLayout(UsuarioInternalFrame.getContentPane());
-        UsuarioInternalFrame.getContentPane().setLayout(UsuarioInternalFrameLayout);
-        UsuarioInternalFrameLayout.setHorizontalGroup(
-            UsuarioInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(UsuarioInternalFrameLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(UsuarioInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(UsuarioInternalFrameLayout.createSequentialGroup()
-                        .addGroup(UsuarioInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(UsuarioInternalFrameLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addGroup(UsuarioInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(UsuarioInternalFrameLayout.createSequentialGroup()
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jTextField1)))
-                    .addGroup(UsuarioInternalFrameLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(12, 12, 12)
-                        .addGroup(UsuarioInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4)
-                            .addGroup(UsuarioInternalFrameLayout.createSequentialGroup()
-                                .addGroup(UsuarioInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UsuarioInternalFrameLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(UsuarioInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel6))
-                        .addGap(12, 12, 12)
-                        .addGroup(UsuarioInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, UsuarioInternalFrameLayout.createSequentialGroup()
-                        .addGap(0, 155, Short.MAX_VALUE)
-                        .addComponent(jButton3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
-                .addContainerGap())
-        );
-        UsuarioInternalFrameLayout.setVerticalGroup(
-            UsuarioInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(UsuarioInternalFrameLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(UsuarioInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(UsuarioInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(UsuarioInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(UsuarioInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(UsuarioInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(UsuarioInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap())
-        );
-
-        jMenu6.setText("Admin");
-
-        jMenuItem6.setText("Gerenciar");
-        jMenu6.add(jMenuItem6);
-
-        jMenuItem7.setText("Login");
-        jMenu6.add(jMenuItem7);
-
-        jMenuBar1.add(jMenu6);
-
-        jMenu1.setText("Usuário");
-
-        jMenuItem1.setText("Gerenciar");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        GerenciarAdminJMenuItem.setText("Gerenciar");
+        GerenciarAdminJMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                GerenciarAdminJMenuItemActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        AdminMenu.add(GerenciarAdminJMenuItem);
 
-        jMenuBar1.add(jMenu1);
+        LoginAdminJMenuItem.setText("Login");
+        AdminMenu.add(LoginAdminJMenuItem);
 
-        jMenu2.setText("Máquinas");
+        jMenuBar1.add(AdminMenu);
 
-        jMenuItem2.setText("Gerenciar");
-        jMenu2.add(jMenuItem2);
+        UsuarioMenu.setText("Usuário");
 
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Vendas");
-
-        jMenuItem3.setText("Nova venda");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        GerenciarUsuarioJMenuItem.setText("Gerenciar");
+        GerenciarUsuarioJMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                GerenciarUsuarioJMenuItemActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem3);
+        UsuarioMenu.add(GerenciarUsuarioJMenuItem);
 
-        jMenuItem4.setText("Relatório");
-        jMenu3.add(jMenuItem4);
+        jMenuBar1.add(UsuarioMenu);
 
-        jMenuBar1.add(jMenu3);
+        MaquinasMenu.setText("Máquinas");
 
-        jMenu4.setText("Sobre");
+        GerenciarMaquinasJMenuItem.setText("Gerenciar");
+        MaquinasMenu.add(GerenciarMaquinasJMenuItem);
 
-        jMenuItem5.setText("Sobre nós");
-        jMenu4.add(jMenuItem5);
+        jMenuBar1.add(MaquinasMenu);
 
-        jMenuBar1.add(jMenu4);
+        VendasMenu.setText("Vendas");
+
+        NovaVendaJMenuItem.setText("Nova venda");
+        NovaVendaJMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NovaVendaJMenuItemActionPerformed(evt);
+            }
+        });
+        VendasMenu.add(NovaVendaJMenuItem);
+
+        RelatorioVendaJMenuItem.setText("Relatório");
+        VendasMenu.add(RelatorioVendaJMenuItem);
+
+        jMenuBar1.add(VendasMenu);
+
+        SobreMenu.setText("Sobre");
+
+        SobreJMenuItem.setText("Sobre nós");
+        SobreMenu.add(SobreJMenuItem);
+
+        jMenuBar1.add(SobreMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -234,27 +130,60 @@ public class MainFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(UsuarioInternalFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 189, Short.MAX_VALUE))
+            .addGap(0, 617, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(UsuarioInternalFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 187, Short.MAX_VALUE))
+            .addGap(0, 477, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void initialOpening(){
+        this.AdminMenu.setEnabled(false);
+        this.MaquinasMenu.setEnabled(false);
+        this.UsuarioMenu.setEnabled(false);
+        this.VendasMenu.setEnabled(false);
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        if(login.getSuccess()){
+            
+        }
+        this.AdminMenu.setEnabled(true);
+        this.MaquinasMenu.setEnabled(true);
+        this.UsuarioMenu.setEnabled(true);
+        this.VendasMenu.setEnabled(true);
+    }
+    
+    private final Runnable loginThread = new Runnable(){
+        public void run(){
+            while(!login.getSuccess()){
+            
+            }
+        }
+    };
+            
+    private void GerenciarUsuarioJMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GerenciarUsuarioJMenuItemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_GerenciarUsuarioJMenuItemActionPerformed
+
+    private void NovaVendaJMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaVendaJMenuItemActionPerformed
+        if(javax.swing.JOptionPane.showConfirmDialog(null, "É cliente?", "Atenção!", JOptionPane.YES_NO_OPTION) == 1){
+            novavenda.setCodigoClienteState(true);
+        }
+        else{
+            if(javax.swing.JOptionPane.showConfirmDialog(null, "Deseja cadastrar-se?", "Atenção!", JOptionPane.YES_NO_OPTION) == 1){
+                usuario.clearAllFields();
+                usuario.setVisible(true);
+                novavenda.setCodigoCliente(usuario.getCodigoCliente());
+            }
+            novavenda.setCodigoClienteState(false);
+        }
+    }//GEN-LAST:event_NovaVendaJMenuItemActionPerformed
+
+    private void GerenciarAdminJMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GerenciarAdminJMenuItemActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GerenciarAdminJMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -289,44 +218,27 @@ public class MainFrame extends javax.swing.JFrame {
                 new MainFrame().setVisible(true);
             }
         });
-        
-        //javax.swing.JInternalFrame askdasjlk = new javax.swing.JInternalFrame();
-        //askdasjlk.setVisible(true);
     }
+    
+    NovaVendaJInternalFrame novavenda;
+    MaquinasJInternalFrame maquinas;
+    UsuarioJInternalFrame usuario;
+    AdminJInternalFrame admin;
+    LoginJInternalFrame login;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JInternalFrame UsuarioInternalFrame;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu AdminMenu;
+    private javax.swing.JMenuItem GerenciarAdminJMenuItem;
+    private javax.swing.JMenuItem GerenciarMaquinasJMenuItem;
+    private javax.swing.JMenuItem GerenciarUsuarioJMenuItem;
+    private javax.swing.JMenuItem LoginAdminJMenuItem;
+    private javax.swing.JMenu MaquinasMenu;
+    private javax.swing.JMenuItem NovaVendaJMenuItem;
+    private javax.swing.JMenuItem RelatorioVendaJMenuItem;
+    private javax.swing.JMenuItem SobreJMenuItem;
+    private javax.swing.JMenu SobreMenu;
+    private javax.swing.JMenu UsuarioMenu;
+    private javax.swing.JMenu VendasMenu;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }
