@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LanHouseJFrame;
+package Limbo;
 
 /**
  *
@@ -27,21 +27,26 @@ public class LoginJInternalFrame extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        CodigoTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         SenhaTextField = new javax.swing.JTextField();
         OKJButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        CodigoTextField = new javax.swing.JTextField();
+
+        jLabel3.setText("Senha:");
+
+        OKJButton.setText("OK");
+        OKJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                OKJButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Login");
 
         jLabel2.setText("Código:");
-
-        jLabel3.setText("Senha:");
-
-        OKJButton.setText("OK");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -59,7 +64,7 @@ public class LoginJInternalFrame extends javax.swing.JInternalFrame {
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(SenhaTextField)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(OKJButton)
@@ -86,9 +91,12 @@ public class LoginJInternalFrame extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public boolean getSuccess(){
-        return this.CodigoTextField.getText().compareTo("82380") == 1 && this.CodigoTextField.getText().compareTo("82380") == 1;
-    }
+    private void OKJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKJButtonActionPerformed
+        if(CodigoTextField.getText().compareTo("82380")==0 && SenhaTextField.getText().compareTo("82380")==0){
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_OKJButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CodigoTextField;

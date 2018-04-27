@@ -5,19 +5,25 @@
  */
 package LanHouseJFrame;
 
+import Limbo.LoginJInternalFrame;
+import java.awt.AWTEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.event.ContainerEvent;
+import java.awt.event.ContainerListener;
 import javax.swing.JOptionPane;
-import java.lang.Thread;
 
 /**
  *
  * @author juanvmr
  */
-public class MainFrame extends javax.swing.JFrame {
+public class MainJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form MainFrame
      */
-    public MainFrame() {
+    public MainJFrame() {
         initComponents();
         
         admin = new AdminJInternalFrame();
@@ -145,23 +151,35 @@ public class MainFrame extends javax.swing.JFrame {
         this.MaquinasMenu.setEnabled(false);
         this.UsuarioMenu.setEnabled(false);
         this.VendasMenu.setEnabled(false);
+        
+        this.setVisible(true);
+        this.addComponentListener(new ComponentListener() {
+            @Override
+            public void componentResized(ComponentEvent e) {
 
-        if(login.getSuccess()){
-            
-        }
-        this.AdminMenu.setEnabled(true);
-        this.MaquinasMenu.setEnabled(true);
-        this.UsuarioMenu.setEnabled(true);
-        this.VendasMenu.setEnabled(true);
-    }
-    
-    private final Runnable loginThread = new Runnable(){
-        public void run(){
-            while(!login.getSuccess()){
-            
             }
-        }
-    };
+
+            @Override
+            public void componentMoved(ComponentEvent e) {
+
+            }
+
+            @Override
+            public void componentShown(ComponentEvent e) {
+
+            }
+
+            @Override
+            public void componentHidden(ComponentEvent e) {
+                AdminMenu.setEnabled(true);
+                MaquinasMenu.setEnabled(true);
+                UsuarioMenu.setEnabled(true);
+                VendasMenu.setEnabled(true);
+            }
+
+        });
+        
+    }
             
     private void GerenciarUsuarioJMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GerenciarUsuarioJMenuItemActionPerformed
         // TODO add your handling code here:
@@ -202,20 +220,21 @@ public class MainFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainFrame().setVisible(true);
+                new MainJFrame().setVisible(true);
             }
         });
     }
@@ -225,6 +244,7 @@ public class MainFrame extends javax.swing.JFrame {
     UsuarioJInternalFrame usuario;
     AdminJInternalFrame admin;
     LoginJInternalFrame login;
+    ActionEvent evt;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AdminMenu;
