@@ -5,17 +5,19 @@
  */
 package LanHouseJFrame;
 
-import LanHouseJFrame.MainJFrame;
 import java.awt.AWTEvent;
 import java.awt.event.ActionEvent;
+import FileInteration.FileInterator;
 
 public class LoginJFrame extends javax.swing.JFrame {
 
 
     public LoginJFrame() {
         initComponents();
-        //this.add(M)
-        //this.dispatchEvent(e);
+        fileIT = new FileInterator("lastUser.txt", true);
+        if(fileIT.fileRead() != null){
+            CodigoTextField.setText(fileIT.fileRead());
+        }
     }
 
 
@@ -90,7 +92,8 @@ public class LoginJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void OKJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKJButtonActionPerformed
-        if(CodigoTextField.getText().compareTo("82380")==0 && SenhaTextField.getText().compareTo("82380")==0){
+        if(SenhaTextField.getText().compareTo("82380")==0){
+            fileIT.fileWrite(CodigoTextField.getText());
             new MainJFrame().setVisible(true);
             this.dispose();
         }
@@ -105,6 +108,8 @@ public class LoginJFrame extends javax.swing.JFrame {
             }
         });
     }
+    
+    FileInterator fileIT;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CodigoTextField;
