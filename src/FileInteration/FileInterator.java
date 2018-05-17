@@ -37,8 +37,8 @@ public class FileInterator {
         }
         
         try{
-            fw = new FileWriter(filePath, append);
-            fr = new FileReader(filePath);
+            fw = new FileWriter(this.filePath, append);
+            fr = new FileReader(this.filePath);
             
             bfw = new BufferedWriter(fw);
             bfr = new BufferedReader(fr);
@@ -49,8 +49,11 @@ public class FileInterator {
     }
     
     public void fileWrite(String word){
+        System.out.println("Entrou na escrita");
+        System.out.println("Escrita: " + word);
         try{
             bfw.write(word);
+            bfw.flush();
         }
         catch(IOException e){
             e.printStackTrace();
@@ -67,12 +70,13 @@ public class FileInterator {
     public String fileRead(){
         String line;
         String word = new String();
-        
+        System.out.println("Entrou na leitura");
         try{
             while((line = bfr.readLine()) != null){
+                System.out.println("Linha: " + line);
                 word += line;
-                System.out.println(line);
             }
+            System.out.println("Leitura: " + word);
         }
         catch(IOException e){
             e.printStackTrace();
@@ -89,10 +93,11 @@ public class FileInterator {
     }
     
     public void writeStackTrace(Exception k){
+        System.out.println("Entrou na exception");
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         k.printStackTrace(pw);
         
-        fileWrite(pw.toString());
+        fileWrite(sw.toString());
     }
 }

@@ -5,6 +5,11 @@
  */
 package LanHouseJFrame;
 
+import Exceptions.GeneralException;
+import FileInteration.FileInterator;
+import java.text.ParseException;
+import javax.swing.text.MaskFormatter;
+
 /**
  *
  * @author juanvmr
@@ -15,6 +20,8 @@ public class UsuarioJInternalFrame extends javax.swing.JInternalFrame {
      * Creates new form UsuarioInternalFrame
      */
     public UsuarioJInternalFrame() {
+        fileIT = new FileInterator("exceptionLog.txt", true);
+        setFormatter();
         initComponents();
         random = new java.util.Random();
     }
@@ -30,20 +37,16 @@ public class UsuarioJInternalFrame extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         NomeTextField = new javax.swing.JTextField();
-        CPFTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        DataNascTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         RuaTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        CEPTextField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         BairroTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         CidadeTextField = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        TelefoneTextField = new javax.swing.JTextField();
         PesquisarJButton = new javax.swing.JButton();
         ExcluirJButton = new javax.swing.JButton();
         CadastrarJButton = new javax.swing.JButton();
@@ -51,6 +54,11 @@ public class UsuarioJInternalFrame extends javax.swing.JInternalFrame {
         jLabel9 = new javax.swing.JLabel();
         CodigoClienteTextField = new javax.swing.JTextField();
         CodigoClienteTextField.setEnabled(false);
+        CPFTextField = new javax.swing.JFormattedTextField(CPFMask);
+        ErrorLabel = new javax.swing.JLabel();
+        DataNascTextField = new javax.swing.JFormattedTextField(DataNascMask);
+        CEPTextField = new javax.swing.JFormattedTextField(CEPMask);
+        TelefoneTextField = new javax.swing.JFormattedTextField(TelefoneMask);
 
         jLabel1.setText("Nome:");
 
@@ -83,6 +91,9 @@ public class UsuarioJInternalFrame extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Codigo Cliente:");
 
+        ErrorLabel.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        ErrorLabel.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,55 +102,51 @@ public class UsuarioJInternalFrame extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(DataNascTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(CPFTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(NomeTextField)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel6))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BairroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TelefoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(CadastrarJButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(AtualizarJButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ExcluirJButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(PesquisarJButton))
-                            .addComponent(RuaTextField)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CidadeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(CEPTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(NomeTextField))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CodigoClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(ErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CadastrarJButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(AtualizarJButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ExcluirJButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PesquisarJButton))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(RuaTextField)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(CPFTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(DataNascTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(CEPTextField)
+                                    .addComponent(CidadeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel6))
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(TelefoneTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                                    .addComponent(BairroTextField))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -152,9 +159,9 @@ public class UsuarioJInternalFrame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(DataNascTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
                     .addComponent(CPFTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(DataNascTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(RuaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,25 +169,26 @@ public class UsuarioJInternalFrame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(CEPTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(BairroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BairroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CEPTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CidadeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(TelefoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(TelefoneTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(CodigoClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PesquisarJButton)
                     .addComponent(ExcluirJButton)
                     .addComponent(CadastrarJButton)
-                    .addComponent(AtualizarJButton))
+                    .addComponent(AtualizarJButton)
+                    .addComponent(ErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -188,10 +196,58 @@ public class UsuarioJInternalFrame extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void CadastrarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarJButtonActionPerformed
-        this.setVisible(false);
-        generateCodigo();
+        try{
+            testeCampos();
+            this.setVisible(false);
+            generateCodigo();
+        }
+        catch(GeneralException e){
+            e.printStackTrace();
+            fileIT.writeStackTrace(e);
+            errorMessage = e.getMessage();
+            this.ErrorLabel.setText(errorMessage);
+            if(errorMessage.contains("CPF")){
+                CPFTextField.setText("*");
+            }
+            else if(errorMessage.contains("Telefone")){
+                TelefoneTextField.setText("*");
+            }
+            else if(errorMessage.contains("Nome")){
+                NomeTextField.setText("*");
+            }
+        }
     }//GEN-LAST:event_CadastrarJButtonActionPerformed
 
+    private void testeCampos() throws GeneralException{
+        if(CPFTextField.getText().isEmpty()){
+            throw new GeneralException("Campo CFP vazio");
+        }
+        else if(TelefoneTextField.getText().isEmpty()){
+            throw new GeneralException("Campo Telefone vazio");
+        }
+        else if(NomeTextField.getText().isEmpty()){
+            throw new GeneralException("Campo Nome vazio");
+        }
+    }
+    
+    private void setFormatter(){
+        try{
+            CPFMask = new MaskFormatter("###.###.###-##");
+            CEPMask = new MaskFormatter("#####-###");
+            DataNascMask = new MaskFormatter("##/##/####");
+            TelefoneMask = new MaskFormatter("#-####-####");
+            
+            CPFMask.setPlaceholderCharacter('_');
+            CEPMask.setPlaceholderCharacter('_');
+            DataNascMask.setPlaceholderCharacter('_');
+            TelefoneMask.setPlaceholderCharacter('_');
+        }
+        catch(ParseException e){
+            e.printStackTrace();
+            fileIT.writeStackTrace(e);
+        }
+    }
+    
     public void clearAllFields(){
         this.BairroTextField.setText("");
         this.CEPTextField.setText("");
@@ -211,22 +267,29 @@ public class UsuarioJInternalFrame extends javax.swing.JInternalFrame {
         this.CodigoClienteTextField.setText(random.ints(1, 100000).toString());
     }
     
-    java.util.Random random;
+    private java.util.Random random;
+    private MaskFormatter CPFMask;
+    private MaskFormatter CEPMask;
+    private MaskFormatter TelefoneMask;
+    private MaskFormatter DataNascMask;
+    private FileInterator fileIT;
+    private String errorMessage;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AtualizarJButton;
     private javax.swing.JTextField BairroTextField;
-    private javax.swing.JTextField CEPTextField;
-    private javax.swing.JTextField CPFTextField;
+    private javax.swing.JFormattedTextField CEPTextField;
+    private javax.swing.JFormattedTextField CPFTextField;
     private javax.swing.JButton CadastrarJButton;
     private javax.swing.JTextField CidadeTextField;
     private javax.swing.JTextField CodigoClienteTextField;
-    private javax.swing.JTextField DataNascTextField;
+    private javax.swing.JFormattedTextField DataNascTextField;
+    private javax.swing.JLabel ErrorLabel;
     private javax.swing.JButton ExcluirJButton;
     private javax.swing.JTextField NomeTextField;
     private javax.swing.JButton PesquisarJButton;
     private javax.swing.JTextField RuaTextField;
-    private javax.swing.JTextField TelefoneTextField;
+    private javax.swing.JFormattedTextField TelefoneTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

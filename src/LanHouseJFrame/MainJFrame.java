@@ -41,8 +41,6 @@ public class MainJFrame extends javax.swing.JFrame {
         maquinas = new MaquinasJInternalFrame();
         maquinas.setVisible(false);
         this.add(maquinas);
-        
-        initialOpening();
     }
 
     /**
@@ -137,44 +135,9 @@ public class MainJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void initialOpening(){
-        this.AdminMenu.setEnabled(false);
-        this.MaquinasMenu.setEnabled(false);
-        this.UsuarioMenu.setEnabled(false);
-        this.VendasMenu.setEnabled(false);
-        
-        this.setVisible(true);
-        this.addComponentListener(new ComponentListener() {
-            @Override
-            public void componentResized(ComponentEvent e) {
-
-            }
-
-            @Override
-            public void componentMoved(ComponentEvent e) {
-
-            }
-
-            @Override
-            public void componentShown(ComponentEvent e) {
-
-            }
-
-            @Override
-            public void componentHidden(ComponentEvent e) {
-                AdminMenu.setEnabled(true);
-                MaquinasMenu.setEnabled(true);
-                UsuarioMenu.setEnabled(true);
-                VendasMenu.setEnabled(true);
-            }
-
-        });
-        
-    }
             
     private void GerenciarUsuarioJMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GerenciarUsuarioJMenuItemActionPerformed
-        // TODO add your handling code here:
+        usuario.setVisible(true);
     }//GEN-LAST:event_GerenciarUsuarioJMenuItemActionPerformed
 
     private void NovaVendaJMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaVendaJMenuItemActionPerformed
