@@ -70,12 +70,32 @@ public class AdminJInternalFrame extends javax.swing.JInternalFrame {
         jLabel8.setText("Telefone:");
 
         PesquisarJButton.setText("Pesquisar");
+        PesquisarJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PesquisarJButtonActionPerformed(evt);
+            }
+        });
 
         ExcluirJButton.setText("Excluir");
+        ExcluirJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExcluirJButtonActionPerformed(evt);
+            }
+        });
 
         CadastrarJButton.setText("Cadastrar");
+        CadastrarJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CadastrarJButtonActionPerformed(evt);
+            }
+        });
 
         AtualizarJButton.setText("Atualizar");
+        AtualizarJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtualizarJButtonActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Login:");
 
@@ -200,6 +220,22 @@ public class AdminJInternalFrame extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CadastrarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarJButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CadastrarJButtonActionPerformed
+
+    private void AtualizarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarJButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AtualizarJButtonActionPerformed
+
+    private void ExcluirJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirJButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ExcluirJButtonActionPerformed
+
+    private void PesquisarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarJButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PesquisarJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
