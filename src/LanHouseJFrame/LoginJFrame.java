@@ -5,13 +5,23 @@
  */
 package LanHouseJFrame;
 
-import FileInteration.FileInterator;
+import LanHouseApp.jfa.fao.FileInterator;
 
 public class LoginJFrame extends javax.swing.JFrame {
 
 
     public LoginJFrame() {
         initComponents();
+        
+        //Inicializar Banco de Dados
+        try{
+            Runtime.getRuntime().exec("cmd /c rundb.bat");
+        }
+        catch(java.io.IOException e){
+            e.printStackTrace();
+            System.out.println("Banco não inicializado");
+        }
+        
         fileIT = new FileInterator("lastUser.txt", true);
         if(!(lastUser = fileIT.fileRead()).isEmpty()){
             CodigoTextField.setText(lastUser);

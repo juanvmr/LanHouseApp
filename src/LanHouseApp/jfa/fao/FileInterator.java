@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package FileInteration;
+package LanHouseApp.jfa.fao;
 
 import java.io.FileWriter;
 import java.io.FileReader;
@@ -26,15 +26,8 @@ public class FileInterator {
     private BufferedWriter bfw;
     private BufferedReader bfr;
     
-    //private int magicalTries = 0;
-    
     public FileInterator(String filePath, boolean append){
-        if(filePath.isEmpty()){
-            this.filePath = new File("temp.txt");
-        }
-        else{
-            this.filePath = new File(filePath);
-        }
+        this.filePath = filePath.isEmpty() ? new File("temp.txt") : new File(filePath);
         
         try{
             fw = new FileWriter(this.filePath, append);
@@ -49,51 +42,31 @@ public class FileInterator {
     }
     
     public void fileWrite(String word){
-        System.out.println("Entrou na escrita");
-        System.out.println("Escrita: " + word);
         try{
             bfw.write(word);
             bfw.flush();
         }
         catch(IOException e){
             e.printStackTrace();
-            /*if(magicalTries < 5){
-                fileWrite(word);
-                magicalTries++;
-            }
-            else{
-                magicalTries = 0;
-            }*/
         }
     }
     
     public String fileRead(){
         String line;
         String word = new String();
-        System.out.println("Entrou na leitura");
         try{
             while((line = bfr.readLine()) != null){
-                System.out.println("Linha: " + line);
                 word += line;
             }
-            System.out.println("Leitura: " + word);
         }
         catch(IOException e){
             e.printStackTrace();
-            /*if(magicalTries < 5){
-                word = fileRead();
-                magicalTries++;
-            }
-            else{
-                magicalTries = 0;
-            }*/
         }
         
         return word;
     }
     
     public void writeStackTrace(Exception k){
-        System.out.println("Entrou na exception");
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         k.printStackTrace(pw);

@@ -53,8 +53,18 @@ public class NovaVendaJInternalFrame extends javax.swing.JInternalFrame {
         jLabel2.setText("Valor Total:");
 
         FinalizarJButton.setText("Finalizar");
+        FinalizarJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FinalizarJButtonActionPerformed(evt);
+            }
+        });
 
         AdicionarJButton.setText("Adicionar");
+        AdicionarJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdicionarJButtonActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Código Cliente:");
 
@@ -121,6 +131,14 @@ public class NovaVendaJInternalFrame extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AdicionarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdicionarJButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AdicionarJButtonActionPerformed
+
+    private void FinalizarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinalizarJButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FinalizarJButtonActionPerformed
 
     public void setCodigoClienteState(boolean state){
         this.CodigoClienteTextField.setEnabled(state);

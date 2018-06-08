@@ -5,8 +5,8 @@
  */
 package LanHouseJFrame;
 
-import Exceptions.GeneralException;
-import FileInteration.FileInterator;
+import LanHouseApp.exceptions.GeneralException;
+import LanHouseApp.jfa.fao.FileInterator;
 import java.text.ParseException;
 import javax.swing.text.MaskFormatter;
 
@@ -20,7 +20,8 @@ public class UsuarioJInternalFrame extends javax.swing.JInternalFrame {
      * Creates new form UsuarioInternalFrame
      */
     public UsuarioJInternalFrame() {
-        fileIT = new FileInterator("exceptionLog.txt", true);
+        ExcFileIT = new FileInterator("exceptionLog.log", true);
+        LogFileIT = new FileInterator("actionLog.log", true);
         setFormatter();
         initComponents();
         random = new java.util.Random();
@@ -77,8 +78,18 @@ public class UsuarioJInternalFrame extends javax.swing.JInternalFrame {
         jLabel8.setText("Telefone:");
 
         PesquisarJButton.setText("Pesquisar");
+        PesquisarJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PesquisarJButtonActionPerformed(evt);
+            }
+        });
 
         ExcluirJButton.setText("Excluir");
+        ExcluirJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExcluirJButtonActionPerformed(evt);
+            }
+        });
 
         CadastrarJButton.setText("Cadastrar");
         CadastrarJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -88,6 +99,11 @@ public class UsuarioJInternalFrame extends javax.swing.JInternalFrame {
         });
 
         AtualizarJButton.setText("Atualizar");
+        AtualizarJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtualizarJButtonActionPerformed(evt);
+            }
+        });
 
         jLabel9.setText("Codigo Cliente:");
 
@@ -183,12 +199,13 @@ public class UsuarioJInternalFrame extends javax.swing.JInternalFrame {
                     .addComponent(jLabel9)
                     .addComponent(CodigoClienteTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PesquisarJButton)
-                    .addComponent(ExcluirJButton)
-                    .addComponent(CadastrarJButton)
-                    .addComponent(AtualizarJButton)
-                    .addComponent(ErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ErrorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(PesquisarJButton)
+                        .addComponent(ExcluirJButton)
+                        .addComponent(CadastrarJButton)
+                        .addComponent(AtualizarJButton)))
                 .addContainerGap())
         );
 
@@ -203,7 +220,7 @@ public class UsuarioJInternalFrame extends javax.swing.JInternalFrame {
         }
         catch(GeneralException e){
             e.printStackTrace();
-            fileIT.writeStackTrace(e);
+            ExcFileIT.writeStackTrace(e);
             errorMessage = e.getMessage();
             this.ErrorLabel.setText(errorMessage);
             if(errorMessage.contains("CPF")){
@@ -217,6 +234,18 @@ public class UsuarioJInternalFrame extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_CadastrarJButtonActionPerformed
+
+    private void AtualizarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarJButtonActionPerformed
+        
+    }//GEN-LAST:event_AtualizarJButtonActionPerformed
+
+    private void ExcluirJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirJButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ExcluirJButtonActionPerformed
+
+    private void PesquisarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarJButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PesquisarJButtonActionPerformed
 
     private void testeCampos() throws GeneralException{
         if(CPFTextField.getText().isEmpty()){
@@ -244,7 +273,7 @@ public class UsuarioJInternalFrame extends javax.swing.JInternalFrame {
         }
         catch(ParseException e){
             e.printStackTrace();
-            fileIT.writeStackTrace(e);
+            ExcFileIT.writeStackTrace(e);
         }
     }
     
@@ -272,7 +301,8 @@ public class UsuarioJInternalFrame extends javax.swing.JInternalFrame {
     private MaskFormatter CEPMask;
     private MaskFormatter TelefoneMask;
     private MaskFormatter DataNascMask;
-    private FileInterator fileIT;
+    private FileInterator ExcFileIT;
+    private FileInterator LogFileIT;
     private String errorMessage;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
