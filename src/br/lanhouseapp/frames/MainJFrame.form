@@ -13,9 +13,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gerenciar"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GerenciarAdminJMenuItemActionPerformed"/>
-              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -28,9 +25,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Gerenciar"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GerenciarUsuarioJMenuItemActionPerformed"/>
-              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -55,9 +49,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Nova venda"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NovaVendaJMenuItemActionPerformed"/>
-              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="RelatorioVendaJMenuItem">
               <Properties>

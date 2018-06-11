@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LanHouseApp.jfa.fao;
+package br.lanhouseapp.jfa.fao;
 
 import java.io.FileWriter;
 import java.io.FileReader;

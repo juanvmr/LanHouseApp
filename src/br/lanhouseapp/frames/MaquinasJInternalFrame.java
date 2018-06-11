@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LanHouseJFrame;
+package br.lanhouseapp.frames;
+import br.lanhouseapp.listeners.UsuarioListener;
 
 /**
  *
@@ -16,6 +17,7 @@ public class MaquinasJInternalFrame extends javax.swing.JInternalFrame {
      */
     public MaquinasJInternalFrame() {
         initComponents();
+        CadastrarJButton.addActionListener(new UsuarioListener());
     }
 
     /**
@@ -137,32 +139,12 @@ public class MaquinasJInternalFrame extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         CadastrarJButton.setText("Cadastrar");
-        CadastrarJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CadastrarJButtonActionPerformed(evt);
-            }
-        });
 
         AtualizarJButton.setText("Atualizar");
-        AtualizarJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AtualizarJButtonActionPerformed(evt);
-            }
-        });
 
         ExcluirJButton.setText("Excluir");
-        ExcluirJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExcluirJButtonActionPerformed(evt);
-            }
-        });
 
         PesquisarJButton.setText("Pesquisar");
-        PesquisarJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PesquisarJButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -333,22 +315,6 @@ public class MaquinasJInternalFrame extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void CadastrarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarJButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CadastrarJButtonActionPerformed
-
-    private void AtualizarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarJButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AtualizarJButtonActionPerformed
-
-    private void ExcluirJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirJButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ExcluirJButtonActionPerformed
-
-    private void PesquisarJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PesquisarJButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PesquisarJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

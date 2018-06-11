@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LanHouseJFrame;
+package br.lanhouseapp.frames;
 
-import LanHouseApp.jfa.fao.FileInterator;
+import br.lanhouseapp.jfa.fao.FileInterator;
 
 public class LoginJFrame extends javax.swing.JFrame {
 

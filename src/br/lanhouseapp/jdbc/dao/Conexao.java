@@ -1,4 +1,4 @@
-package LanHouseApp.jdbc.dao;
+package br.lanhouseapp.jdbc.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

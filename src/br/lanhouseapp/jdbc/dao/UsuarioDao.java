@@ -1,6 +1,6 @@
-package LanHouseApp.jdbc.dao;
+package br.lanhouseapp.jdbc.dao;
 
-import LanHouseApp.model.UsuarioObj;
+import br.lanhouseapp.models.UsuarioObj;
 import java.net.ConnectException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

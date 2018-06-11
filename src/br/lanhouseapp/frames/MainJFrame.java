@@ -3,16 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LanHouseJFrame;
-
-import Limbo.LoginJInternalFrame;
-import java.awt.AWTEvent;
-import java.awt.event.ActionEvent;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-import java.awt.event.ContainerEvent;
-import java.awt.event.ContainerListener;
-import javax.swing.JOptionPane;
+package br.lanhouseapp.frames;
+import br.lanhouseapp.listeners.MainFrameListener;
+import br.lanhouseapp.listeners.UsuarioListener;
 
 /**
  *
@@ -25,7 +18,11 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     public MainJFrame() {
         initComponents();
-        
+        addFrames();
+        addListeners();
+    }
+    
+    private void addFrames(){
         admin = new AdminJInternalFrame();
         admin.setVisible(false);
         this.add(admin);
@@ -41,6 +38,24 @@ public class MainJFrame extends javax.swing.JFrame {
         maquinas = new MaquinasJInternalFrame();
         maquinas.setVisible(false);
         this.add(maquinas);
+    }
+    
+    private void addListeners(){
+        listener = new MainFrameListener(this);
+        
+        GerenciarAdminJMenuItem.addActionListener(listener);
+        GerenciarMaquinasJMenuItem.addActionListener(listener);
+        GerenciarUsuarioJMenuItem.addActionListener(listener);
+        NovaVendaJMenuItem.addActionListener(listener);
+        RelatorioVendaJMenuItem.addActionListener(listener);
+        SobreJMenuItem.addActionListener(listener);
+        
+        SobreJMenuItem.setActionCommand(".main.sobreButton");
+        GerenciarAdminJMenuItem.setActionCommand(".main.gerenciarAdminButton");
+        GerenciarMaquinasJMenuItem.setActionCommand(".main.gerenciarMaquinasButton");
+        GerenciarUsuarioJMenuItem.setActionCommand(".main.gerenciarUsuarioButton");
+        NovaVendaJMenuItem.setActionCommand(".main.novaVendaButton");
+        RelatorioVendaJMenuItem.setActionCommand(".main.relatorioVendaButton");
     }
 
     /**
@@ -70,11 +85,6 @@ public class MainJFrame extends javax.swing.JFrame {
         AdminMenu.setText("Admin");
 
         GerenciarAdminJMenuItem.setText("Gerenciar");
-        GerenciarAdminJMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GerenciarAdminJMenuItemActionPerformed(evt);
-            }
-        });
         AdminMenu.add(GerenciarAdminJMenuItem);
 
         jMenuBar1.add(AdminMenu);
@@ -82,11 +92,6 @@ public class MainJFrame extends javax.swing.JFrame {
         UsuarioMenu.setText("Usuário");
 
         GerenciarUsuarioJMenuItem.setText("Gerenciar");
-        GerenciarUsuarioJMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GerenciarUsuarioJMenuItemActionPerformed(evt);
-            }
-        });
         UsuarioMenu.add(GerenciarUsuarioJMenuItem);
 
         jMenuBar1.add(UsuarioMenu);
@@ -101,11 +106,6 @@ public class MainJFrame extends javax.swing.JFrame {
         VendasMenu.setText("Vendas");
 
         NovaVendaJMenuItem.setText("Nova venda");
-        NovaVendaJMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NovaVendaJMenuItemActionPerformed(evt);
-            }
-        });
         VendasMenu.add(NovaVendaJMenuItem);
 
         RelatorioVendaJMenuItem.setText("Relatório");
@@ -136,34 +136,12 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
             
-    private void GerenciarUsuarioJMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GerenciarUsuarioJMenuItemActionPerformed
-        usuario.setVisible(true);
-    }//GEN-LAST:event_GerenciarUsuarioJMenuItemActionPerformed
-
-    private void NovaVendaJMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovaVendaJMenuItemActionPerformed
-        if(javax.swing.JOptionPane.showConfirmDialog(null, "É cliente?", "Atenção!", JOptionPane.YES_NO_OPTION) == 1){
-            novavenda.setCodigoClienteState(true);
-        }
-        else{
-            if(javax.swing.JOptionPane.showConfirmDialog(null, "Deseja cadastrar-se?", "Atenção!", JOptionPane.YES_NO_OPTION) == 1){
-                usuario.clearAllFields();
-                usuario.setVisible(true);
-                novavenda.setCodigoCliente(usuario.getCodigoCliente());
-            }
-            novavenda.setCodigoClienteState(false);
-        }
-    }//GEN-LAST:event_NovaVendaJMenuItemActionPerformed
-
-    private void GerenciarAdminJMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GerenciarAdminJMenuItemActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_GerenciarAdminJMenuItemActionPerformed
-
     
     NovaVendaJInternalFrame novavenda;
     MaquinasJInternalFrame maquinas;
     UsuarioJInternalFrame usuario;
     AdminJInternalFrame admin;
-    ActionEvent evt;
+    MainFrameListener listener;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu AdminMenu;

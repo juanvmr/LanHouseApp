@@ -221,33 +221,21 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Pesquisar"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PesquisarJButtonActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="ExcluirJButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Excluir"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExcluirJButtonActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="CadastrarJButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cadastrar"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CadastrarJButtonActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="AtualizarJButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Atualizar"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AtualizarJButtonActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>

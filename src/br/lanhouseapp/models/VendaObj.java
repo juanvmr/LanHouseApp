@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LanHouseApp.model;
+package br.lanhouseapp.models;
 
 /**
  *
  * @author juanvmr
  */
-public class AdminObj {
+public class VendaObj {
     
 }
