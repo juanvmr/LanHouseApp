@@ -6,6 +6,9 @@
 package br.lanhouseapp.frames;
 
 import br.lanhouseapp.jfa.fao.FileInterator;
+import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class LoginJFrame extends javax.swing.JFrame {
 
@@ -26,7 +29,7 @@ public class LoginJFrame extends javax.swing.JFrame {
         if(!(lastUser = fileIT.fileRead()).isEmpty()){
             CodigoTextField.setText(lastUser);
         }
-        fileIT = null;
+//        fileIT = null;
     }
 
 
@@ -102,13 +105,21 @@ public class LoginJFrame extends javax.swing.JFrame {
 
     private void OKJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OKJButtonActionPerformed
         if(new String(SenhaField.getPassword()).compareTo("82380")==0){
+           //envia a data de acesso e usuário para o arquivo
+            Calendar calendar = Calendar.getInstance();
+            Date data = calendar.getTime(); 
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+            fileIT = new FileInterator("temp.txt", false);
+            fileIT.fileWrite("Usuário: "+CodigoTextField.getText());
+            fileIT.fileWrite(" Acesso em: "+sdf.format(data));
+            
+            
             fileIT = new FileInterator("lastUser.txt", false);
             fileIT.fileWrite(CodigoTextField.getText());
             new MainJFrame().setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_OKJButtonActionPerformed
-
 
     public static void main(String args[]) {
 
