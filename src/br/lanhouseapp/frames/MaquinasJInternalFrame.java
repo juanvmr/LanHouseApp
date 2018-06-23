@@ -17,7 +17,7 @@ public class MaquinasJInternalFrame extends javax.swing.JInternalFrame {
      */
     public MaquinasJInternalFrame() {
         initComponents();
-        CadastrarJButton.addActionListener(new UsuarioListener());
+      //  CadastrarJButton.addActionListener(new UsuarioListener());
     }
 
     /**
